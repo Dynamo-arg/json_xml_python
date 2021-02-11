@@ -67,6 +67,7 @@ def json_serialize():
     # Generar un json y almacenarlo en archivo (dump)
 
     estudiante1 = {
+        
                   "nombre": "Max",
                   "apellido": "Power",
                   "materias": [
