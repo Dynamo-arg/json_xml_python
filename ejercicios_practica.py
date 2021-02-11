@@ -11,9 +11,17 @@ Programa creado para poner a prueba los conocimientos
 adquiridos durante la clase
 '''
 
-__author__ = "Inove Coding School"
+__author__ = "Sebastian Volpe"
 __email__ = "alumnos@inove.com.ar"
 __version__ = "1.1"
+
+import json
+import requests
+import xml.etree.ElementTree as ET
+from datetime import datetime
+
+import matplotlib.pyplot as plt
+import matplotlib.axes
 
 
 def ej1():
@@ -36,7 +44,18 @@ def ej1():
     # un archivo que usted defina
 
     # Observe el archivo y verifique que se almaceno lo deseado
-    pass
+    datos = {
+                  "nombre": "Sebas",
+                  "apellido": "Volpe",
+                  "dni": "2411545",
+                  "ropas": [
+                      {"prenda": "zapatilla", "cantidad": 4},
+                      {"prenda": "remeras", "cantidad": 12},
+                      ]
+            }
+    with open('datos.json', 'w') as jsonfile:
+        data = [datos]
+        json.dump(data, jsonfile, indent=4)
 
 
 def ej2():
@@ -49,7 +68,14 @@ def ej2():
     # el método "dumps" y finalmente imprimir en pantalla el resultado
     # Recuerde utilizar indent=4 para poder observar mejor el resultado
     # en pantalla y comparelo contra el JSON que generó en el ej1
-    pass
+
+    with open('datos.json', 'r') as jsonfile:
+        data = json.load(jsonfile)
+    
+    with open('prueba.xml', 'w') as jsonfile:
+        json.dump(data, jsonfile, indent=4)
+
+    print(json.dumps(data, indent=4))
 
 
 def ej3():
@@ -59,7 +85,21 @@ def ej3():
     # lo más parecida al ejercicio 1.
     # El objectivo es que armen un archivo XML al menos
     # una vez para que entiendan como funciona.
-    pass
+
+    
+    root = ET.Element("XML")
+    ET.SubElement(root,"Nombre").text = "Sebastian"
+    ET.SubElement(root,"Apellido").text = "Volpe"
+    ET.SubElement(root,"Dni").text = "24112054"
+    ET.SubElement(root,"zapatilla").text = "4"
+    ET.SubElement(root,"remeras").text = "12"
+
+
+    a = ET.ElementTree(root)
+
+    a.write("prueba.xml")
+      
+
 
 
 def ej4():
@@ -106,8 +146,8 @@ def ej5():
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
-    ej1()
+    # ej1()
     # ej2()
-    # ej3()
+    ej3()
     # ej4()
     # ej5()
