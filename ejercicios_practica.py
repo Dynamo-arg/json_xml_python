@@ -172,7 +172,7 @@ def ej5():
         'user6', 'user7','user8', 'user9', 'user10' ]
 
     fig, ax = plt.subplots()
-    fig.suptitle('Porcentaje aprobado por Alumno')
+    fig.suptitle('Aprobadas por usuario')
 
     ax.pie(completadas, labels = labels, autopct='%1.1f%%', startangle=180)
     ax.axis('equal') 
