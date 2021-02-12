@@ -151,20 +151,33 @@ def ej5():
     url = "https://jsonplaceholder.typicode.com/todos"
     response = requests.get(url)
     data = response.json()
-    print(json.dumps(data, indent=4))
-    
-    usuarios = []
-    for i in range (1,10):
-        for user in data:
-            if (user['userId'] == i) and (user['completed'] == True):
-                
-    print(a)
+                    
+
+    id_1 = [1 for x in data if (x['userId'] == 1) and (x['completed'] == True)]
+    id_2 = [1 for x in data if (x['userId'] == 2) and (x['completed'] == True)]
+    id_3 = [1 for x in data if (x['userId'] == 3) and (x['completed'] == True)]
+    id_4 = [1 for x in data if (x['userId'] == 4) and (x['completed'] == True)]
+    id_5 = [1 for x in data if (x['userId'] == 5) and (x['completed'] == True)]
+    id_6 = [1 for x in data if (x['userId'] == 6) and (x['completed'] == True)]
+    id_7 = [1 for x in data if (x['userId'] == 7) and (x['completed'] == True)]
+    id_8 = [1 for x in data if (x['userId'] == 8) and (x['completed'] == True)]
+    id_9 = [1 for x in data if (x['userId'] == 9) and (x['completed'] == True)]
+    id_10 = [1 for x in data if (x['userId'] == 10) and (x['completed'] == True)]
+
+    completadas = [len(id_1),len(id_2),len(id_3),len(id_4),len(id_5),len(id_6),len(id_7),len(id_8),len(id_9),len(id_10)]
 
 
+    labels = [
+        'user1', 'user2', 'user3', 'user4', 'user5',
+        'user6', 'user7','user8', 'user9', 'user10' ]
 
+    fig, ax = plt.subplots()
+    fig.suptitle('Porcentaje aprobado por Alumno')
 
+    ax.pie(completadas, labels = labels, autopct='%1.1f%%', startangle=180)
+    ax.axis('equal') 
 
-
+    plt.show()
 
 
 if __name__ == '__main__':
