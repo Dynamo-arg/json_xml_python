@@ -5,7 +5,6 @@ Ejercicios de práctica
 ---------------------------
 Autor: Inove Coding School
 Version: 1.1
-
 Descripcion:
 Programa creado para poner a prueba los conocimientos
 adquiridos durante la clase
@@ -112,13 +111,20 @@ def ej4():
     # Python lanza algún error, es porque hay problemas en el archivo.
     # Preseten atención al número de fila y al mensaje de error
     # para entender que puede estar mal en el archivo.
-    pass
+
+    tree = ET.parse('prueba.xml')
+    root = tree.getroot()
+
+    print('Recorrer el archivo XML')
+    for child in root:
+        print('tag:', child.tag, 'attr:', child.attrib, 'text:', child.text)
+        for child2 in child:
+            print('tag:', child2.tag, 'attr:', child2.attrib, 'text:', child2.text)
 
 
 def ej5():
     # Ejercicio de consumo de datos por API
-    url = "https://jsonplaceholder.typicode.com/todos"
-
+    
     # El primer paso es que copien esa URL en su explorador web
     # y analicen los datos en general.
     # Observando la URL se puede ver que en total hay 200 entradas,
@@ -142,12 +148,29 @@ def ej5():
     # y verifique si los primeros usuarios (mirando la página a ojo)
     # los datos recolectados son correctos.
 
+    url = "https://jsonplaceholder.typicode.com/todos"
+    response = requests.get(url)
+    data = response.json()
+    print(json.dumps(data, indent=4))
+    
+    usuarios = []
+    for i in range (1,10):
+        for user in data:
+            if (user['userId'] == i) and (user['completed'] == True):
+                
+    print(a)
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
     # ej1()
     # ej2()
-    ej3()
+    #ej3()
     # ej4()
-    # ej5()
+    ej5()
